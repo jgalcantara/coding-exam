@@ -20,8 +20,8 @@ def get_transactionId(transactionId):
     df_txn = read_csv("transaction", True)
     df_prod = read_csv("reference", False)
     txn_df = df_txn[df_txn['transactionId'] == transactionId]
-    prod_df = df_prod[df_prod['productId'] == txn_df['productId'].iloc[0]]
-    resulting_df = pd.concat([txn_df, prod_df], axis=1, join="inner")[['transactionId', 'productName', 'transactionAmount', 'transactionDatetime']]
+    prod_df = df_prod[df_prod['productId'] == txn_df['productId'].item()]
+    resulting_df = pd.concat([txn_df.reset_index(drop=True), prod_df.reset_index(drop=True)], axis=1)[['transactionId', 'productName', 'transactionAmount', 'transactionDatetime']]
     return resulting_df
 
 def transaction_products(last_n_days, col_summary):
@@ -37,5 +37,3 @@ def transaction_products(last_n_days, col_summary):
         df_merge = df_merge.rename(columns={'transactionAmount': 'totalAmount'})
     return df_merge
 
-
-#print(get_transactionId(1))
