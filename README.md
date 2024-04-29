@@ -23,3 +23,10 @@ To run the code:
 2. In your terminal, run the following:
    $ flask --app app run --port 8080
 3. Test the code.
+
+URLs:
+1. 127.0.0.1:8080/transaction
+2. 127.0.0.1:8080/product
+3. 127.0.0.1:8080/assignment/<transaction_id>
+4. 127.0.0.1:8080/assignment/getTransactionSummaryByProducts/<last_n_days>
+5. 127.0.0.1:8080/assignment/getTransactionSummaryByManufacturingCity/<last_n_days>
